@@ -23,6 +23,7 @@ public class PathResolver {
         // DocumentProvider
         if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
             System.out.print("uri global is:");
+            
             System.out.println(uri);
             // ExternalStorageProvider
             if (isExternalStorageDocument(uri)) {
