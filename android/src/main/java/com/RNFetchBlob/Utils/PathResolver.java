@@ -22,8 +22,13 @@ public class PathResolver {
 
         // DocumentProvider
         if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
+            System.out.print("uri global is:");
+            System.out.println(uri)
             // ExternalStorageProvider
             if (isExternalStorageDocument(uri)) {
+                System.out.println("ydhnwb: inside isExternalStorageDocument");
+                System.out.print("uri is:");
+                System.out.println(uri)
                 final String docId = DocumentsContract.getDocumentId(uri);
                 final String[] split = docId.split(":");
                 final String type = split[0];

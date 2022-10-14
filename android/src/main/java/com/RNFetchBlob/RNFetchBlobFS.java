@@ -801,7 +801,7 @@ class RNFetchBlobFS {
         try {
             path = normalizePath(path);
             if(path == null){
-                callback.invoke("failed to stat path `" + path + "` because normalizePath(path) returns null", null);
+                callback.invoke("failed to stat path `" + path + "` because normalizePath(path) returns null");
             }
             WritableMap result = statFile(path);
             if(result == null)
