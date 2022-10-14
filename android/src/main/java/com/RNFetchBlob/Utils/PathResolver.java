@@ -47,10 +47,18 @@ public class PathResolver {
                     }
 
                     Long docId = null;
+                    System.out.print("pathResolver.getRealPathFromUri id: ");
+                    System.out.println(id);
                     //Since Android 10, uri can start with msf scheme like "msf:12345"
                     if (id != null && (id.startsWith("msf:") || id.startsWith("msf%3A"))) {
-                        final String[] split = id.split(":");
-                        docId = Long.valueOf(split[1]);
+                        if(id.startsWith("msf%3A")){
+                            final String[] split = id.split("%3A");
+                            docId = Long.valueOf(split[1]);
+                        }else{
+                            final String[] split = id.split(":");
+                            docId = Long.valueOf(split[1]);
+                        }
+
                     } else {
                         docId = Long.valueOf(id);
                     }
