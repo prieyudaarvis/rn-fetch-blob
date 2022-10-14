@@ -45,8 +45,18 @@ public class PathResolver {
                         String path = rawuri.getPath();
                         return path;
                     }
+
+                    Long docId = null;
+                    //Since Android 10, uri can start with msf scheme like "msf:12345"
+                    if (id != null && (id.startsWith("msf:") || id.startsWith("msf%3A"))) {
+                        final String[] split = id.split(":");
+                        docId = Long.valueOf(split[1]);
+                    } else {
+                        docId = Long.valueOf(id);
+                    }
+
                     final Uri contentUri = ContentUris.withAppendedId(
-                            Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+                            Uri.parse("content://downloads/public_downloads"), Long.valueOf(docId));
 
                     return getDataColumn(context, contentUri, null, null);
                 }
